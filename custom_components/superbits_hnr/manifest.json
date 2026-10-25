@@ -1,7 +1,7 @@
 {
   "domain": "superbits_hnr",
   "name": "Superbits Hit'n'Run",
-  "codeowners": [],
+  "codeowners": ["@nissemayn"],
   "config_flow": true,
   "documentation": "https://github.com/nissemayn/superbits-hnr#readme",
   "iot_class": "cloud_polling",

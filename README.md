@@ -2,6 +2,8 @@
 
 A custom Home Assistant integration that reads a user's Superbits Hit'n'Run log and exposes two sensors. It is an unofficial community integration and is not affiliated with Superbits.
 
+**Author and maintainer:** [@nissemayn](https://github.com/nissemayn)
+
 ## Features
 
 - Total number of records returned by the HNR log.
