@@ -1,0 +1,38 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Superbits Hit’n’Run",
+        "description": "Forbind til Superbits’ Hit’n’Run-log.",
+        "data": {
+          "user_id": "Superbits-bruger-ID",
+          "cookie": "Superbits-cookie"
+        }
+      }
+    },
+    "error": {
+      "invalid_input": "Angiv et positivt bruger-ID og en cookie.",
+      "invalid_auth": "Superbits afviste cookien.",
+      "cannot_connect": "Kunne ikke forbinde til Superbits, eller svaret var ugyldigt."
+    },
+    "abort": {
+      "already_configured": "Denne Superbits-bruger er allerede tilføjet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Superbits Hit’n’Run-indstillinger",
+        "description": "Lad cookie-feltet være tomt for at beholde den nuværende cookie.",
+        "data": {
+          "scan_interval": "Tjekinterval (minutter)",
+          "cookie": "Erstat Superbits-cookie (valgfrit)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Superbits afviste cookien.",
+      "cannot_connect": "Kunne ikke forbinde til Superbits, eller svaret var ugyldigt."
+    }
+  }
+}

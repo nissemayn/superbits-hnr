@@ -1,0 +1,38 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Superbits Hit'n'Run",
+        "description": "Connect to the Superbits Hit'n'Run log.",
+        "data": {
+          "user_id": "Superbits user ID",
+          "cookie": "Superbits cookie"
+        }
+      }
+    },
+    "error": {
+      "invalid_input": "Enter a positive user ID and a cookie.",
+      "invalid_auth": "Superbits rejected the cookie.",
+      "cannot_connect": "Could not connect to Superbits or the response was invalid."
+    },
+    "abort": {
+      "already_configured": "This Superbits user is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Superbits Hit'n'Run options",
+        "description": "Leave the cookie blank to keep the current one.",
+        "data": {
+          "scan_interval": "Check interval (minutes)",
+          "cookie": "Replace Superbits cookie (optional)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Superbits rejected the cookie.",
+      "cannot_connect": "Could not connect to Superbits or the response was invalid."
+    }
+  }
+}

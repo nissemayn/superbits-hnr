@@ -1,0 +1,11 @@
+{
+  "domain": "superbits_hnr",
+  "name": "Superbits Hit'n'Run",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://github.com/nissemayn/superbits-hnr#readme",
+  "issue_tracker": "https://github.com/nissemayn/superbits-hnr/issues",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "0.1.0"
+}
