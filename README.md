@@ -11,6 +11,10 @@ A custom Home Assistant integration that reads a user's Superbits Hit'n'Run log 
 - Active torrent names, IDs, and seed-time values in the Hit'n'Run sensor attributes.
 - Configurable polling interval from 5 minutes to 24 hours (30 minutes by default).
 
+## Dashboard card
+
+![Superbits Hit'n'Run card in Home Assistant](docs/images/superbits-hnr-card.png)
+
 The entity IDs include the configured Superbits user ID. For example, if your user ID is `12345`, they are:
 
 - `sensor.superbits_hnr_12345_total_antal`
