@@ -4,8 +4,8 @@
   "codeowners": [],
   "config_flow": true,
   "documentation": "https://github.com/nissemayn/superbits-hnr#readme",
-  "issue_tracker": "https://github.com/nissemayn/superbits-hnr/issues",
   "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/nissemayn/superbits-hnr/issues",
   "requirements": [],
   "version": "0.1.0"
 }
