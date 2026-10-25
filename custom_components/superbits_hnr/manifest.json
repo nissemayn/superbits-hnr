@@ -2,7 +2,6 @@
   "domain": "superbits_hnr",
   "name": "Superbits Hit'n'Run",
   "codeowners": ["@nissemayn"],
-  "categories": ["diy_makers.web_data_connectors"],
   "config_flow": true,
   "documentation": "https://github.com/nissemayn/superbits-hnr#readme",
   "iot_class": "cloud_polling",
