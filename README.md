@@ -15,10 +15,7 @@ A custom Home Assistant integration that reads a user's Superbits Hit'n'Run log 
 
 ![Superbits Hit'n'Run card in Home Assistant](docs/images/superbits-hnr-card.png)
 
-The entity IDs include the configured Superbits user ID. For example, if your user ID is `12345`, they are:
-
-- `sensor.superbits_hnr_12345_total_antal`
-- `sensor.superbits_hnr_12345_hit_n_run`
+The entity IDs include the configured Superbits user ID. Their suffixes are generated from the translated entity names, so they can vary with your Home Assistant language or if you rename an entity. Find the exact IDs under **Settings → Devices & services → Superbits Hit'n'Run → Entities**.
 
 ## Installation with HACS
 

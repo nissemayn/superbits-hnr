@@ -93,7 +93,7 @@ class SuperbitsHnrConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     for key, value in entry.options.items()
                     if key != CONF_COOKIE
                 }
-                return self.async_update_and_abort(
+                return self.async_update_reload_and_abort(
                     entry,
                     data_updates={CONF_COOKIE: cookie},
                     options=options,
@@ -145,7 +145,7 @@ class SuperbitsHnrConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return SuperbitsHnrOptionsFlow()
 
 
-class SuperbitsHnrOptionsFlow(config_entries.OptionsFlow):
+class SuperbitsHnrOptionsFlow(config_entries.OptionsFlowWithReload):
     """Allow changing the polling interval and refreshing the cookie."""
 
     async def async_step_init(self, user_input: dict[str, Any] | None = None):
