@@ -99,8 +99,12 @@ async def async_get_hnr_data(
                 payload = await response.json(content_type=None)
             except (ValueError, ClientError) as err:
                 raise SuperbitsConnectionError("Superbits returned invalid JSON.") from err
-    except (SuperbitsApiError, ClientResponseError):
+    except SuperbitsApiError:
         raise
+    except ClientResponseError as err:
+        raise SuperbitsConnectionError(
+            "Superbits returned an HTTP error."
+        ) from err
     except (ClientError, TimeoutError) as err:
         raise SuperbitsConnectionError("Could not connect to Superbits.") from err
 

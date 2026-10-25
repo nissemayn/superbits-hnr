@@ -18,6 +18,13 @@ def _entry_cookie(entry: ConfigEntry) -> str:
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up a Superbits HNR config entry."""
+    # A replaced cookie is stored in options. Remove any older copy from data
+    # before setting up the coordinator so only the current cookie is retained.
+    if CONF_COOKIE in entry.options and CONF_COOKIE in entry.data:
+        data = dict(entry.data)
+        data.pop(CONF_COOKIE)
+        hass.config_entries.async_update_entry(entry, data=data)
+
     interval = int(entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL))
     coordinator = SuperbitsHnrCoordinator(
         hass,
@@ -26,10 +33,12 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         _entry_cookie(entry),
         interval,
     )
+    hass.data.setdefault(DOMAIN, {})[entry.entry_id] = coordinator
+    # Register before the initial refresh so a failed first refresh can still
+    # be recovered by changing the cookie in the options flow.
+    entry.async_on_unload(entry.add_update_listener(async_reload_entry))
     await coordinator.async_config_entry_first_refresh()
 
-    hass.data.setdefault(DOMAIN, {})[entry.entry_id] = coordinator
-    entry.async_on_unload(entry.add_update_listener(async_reload_entry))
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
@@ -38,7 +47,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a Superbits HNR config entry."""
     if not await hass.config_entries.async_unload_platforms(entry, PLATFORMS):
         return False
-    hass.data[DOMAIN].pop(entry.entry_id, None)
+    hass.data.get(DOMAIN, {}).pop(entry.entry_id, None)
     return True
 
 

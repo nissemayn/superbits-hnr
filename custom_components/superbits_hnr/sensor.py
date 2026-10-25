@@ -16,12 +16,12 @@ from .coordinator import SuperbitsHnrCoordinator
 SENSORS: tuple[SensorEntityDescription, ...] = (
     SensorEntityDescription(
         key="total",
-        name="Total antal",
+        translation_key="total",
         icon="mdi:counter",
     ),
     SensorEntityDescription(
         key="hitrun",
-        name="Hit'n'Run",
+        translation_key="hitrun",
         icon="mdi:alert-circle-outline",
     ),
 )
@@ -42,6 +42,7 @@ async def async_setup_entry(
 class SuperbitsHnrSensor(CoordinatorEntity[SuperbitsHnrCoordinator], SensorEntity):
     """Expose one value from the Superbits HNR coordinator."""
 
+    _attr_has_entity_name = True
     entity_description: SensorEntityDescription
 
     def __init__(

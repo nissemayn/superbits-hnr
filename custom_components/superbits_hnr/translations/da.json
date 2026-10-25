@@ -8,6 +8,13 @@
           "user_id": "Superbits-bruger-ID",
           "cookie": "Superbits-cookie"
         }
+      },
+      "reauth_confirm": {
+        "title": "Forbind til Superbits igen",
+        "description": "Den nuværende sessionscookie accepteres ikke længere. Indtast en ny cookie.",
+        "data": {
+          "cookie": "Superbits-cookie"
+        }
       }
     },
     "error": {
@@ -16,7 +23,8 @@
       "cannot_connect": "Kunne ikke forbinde til Superbits, eller svaret var ugyldigt."
     },
     "abort": {
-      "already_configured": "Denne Superbits-bruger er allerede tilføjet."
+      "already_configured": "Denne Superbits-bruger er allerede tilføjet.",
+      "unique_id_mismatch": "Cookien tilhører en anden Superbits-bruger."
     }
   },
   "options": {
@@ -33,6 +41,16 @@
     "error": {
       "invalid_auth": "Superbits afviste cookien.",
       "cannot_connect": "Kunne ikke forbinde til Superbits, eller svaret var ugyldigt."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "total": {
+        "name": "Total antal"
+      },
+      "hitrun": {
+        "name": "Hit'n'Run"
+      }
     }
   }
 }

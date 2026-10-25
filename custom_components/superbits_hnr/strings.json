@@ -8,6 +8,13 @@
           "user_id": "Superbits user ID",
           "cookie": "Superbits cookie"
         }
+      },
+      "reauth_confirm": {
+        "title": "Reconnect Superbits",
+        "description": "The current session cookie is no longer accepted. Enter a new cookie.",
+        "data": {
+          "cookie": "Superbits cookie"
+        }
       }
     },
     "error": {
@@ -16,7 +23,8 @@
       "cannot_connect": "Could not connect to Superbits or the response was invalid."
     },
     "abort": {
-      "already_configured": "This Superbits user is already configured."
+      "already_configured": "This Superbits user is already configured.",
+      "unique_id_mismatch": "The cookie belongs to a different Superbits user."
     }
   },
   "options": {
@@ -33,6 +41,16 @@
     "error": {
       "invalid_auth": "Superbits rejected the cookie.",
       "cannot_connect": "Could not connect to Superbits or the response was invalid."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "total": {
+        "name": "Total count"
+      },
+      "hitrun": {
+        "name": "Hit'n'Run"
+      }
     }
   }
 }

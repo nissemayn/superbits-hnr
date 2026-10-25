@@ -56,6 +56,54 @@ class SuperbitsHnrConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
+    async def async_step_reauth(self, entry_data: dict[str, Any]):
+        """Start reauthentication for an existing entry."""
+        return await self.async_step_reauth_confirm()
+
+    async def async_step_reauth_confirm(
+        self, user_input: dict[str, Any] | None = None
+    ):
+        """Validate and store a replacement Superbits cookie."""
+        errors: dict[str, str] = {}
+        entry = self._get_reauth_entry()
+
+        if user_input is not None:
+            cookie = str(user_input.get(CONF_COOKIE, "")).strip()
+            try:
+                if not cookie:
+                    raise ValueError
+                await async_get_hnr_data(
+                    async_get_clientsession(self.hass),
+                    int(entry.data[CONF_USER_ID]),
+                    cookie,
+                )
+            except ValueError:
+                errors["base"] = "invalid_input"
+            except SuperbitsAuthError:
+                errors["base"] = "invalid_auth"
+            except (SuperbitsConnectionError, SuperbitsRateLimitError):
+                errors["base"] = "cannot_connect"
+            else:
+                await self.async_set_unique_id(str(entry.data[CONF_USER_ID]))
+                self._abort_if_unique_id_mismatch()
+                # Reauthentication moves the active credential back into data
+                # and removes any previous options-flow copy.
+                options = {
+                    key: value
+                    for key, value in entry.options.items()
+                    if key != CONF_COOKIE
+                }
+                return self.async_update_and_abort(
+                    entry,
+                    data_updates={CONF_COOKIE: cookie},
+                    options=options,
+                )
+
+        schema = vol.Schema({vol.Required(CONF_COOKIE): _cookie_selector()})
+        return self.async_show_form(
+            step_id="reauth_confirm", data_schema=schema, errors=errors
+        )
+
     async def async_step_user(self, user_input: dict[str, Any] | None = None):
         errors: dict[str, str] = {}
         if user_input is not None:
