@@ -62,4 +62,4 @@ Please do not post cookies or other account credentials in GitHub issues.
 
 ## License and warranty
 
-This project is provided **as-is**, without warranty. No separate license is granted; all rights remain with the author. You may install it for your own Home Assistant instance, but redistribution or modified copies are not granted by this notice.
+This project is licensed under **0BSD**. You may use, copy, modify, and distribute it for any purpose. It is provided **as-is**, without warranty. See [LICENSE](LICENSE) for the full license text.
